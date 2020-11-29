@@ -1,0 +1,46 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes" access="global" >
+    <aura:attribute type="Car__c" name="car" access="public"/>
+    <aura:attribute name="recordError" type="String" access="private"/>
+    <aura:attribute name="carId" type="Id" access="public" default=""/>
+    <aura:attribute name="tabId" type="Id" access="public"/>
+    
+    <aura:handler event="c:CarSelectApplicatonEvent" action="{!c.onCarSelect}"/>
+    <aura:handler event="c:CarExperience" name="carExpAddedEvent" action="{!c.onCarExpAdded}"/>
+   
+    <force:recordData aura:id="service"
+                      recordId="{!v.carId}"
+                      mode="VIEW"
+                      targetFields="{!v.car}"
+                      targetError="{!v.recordError}"
+                      
+                      fields="Id,Name,Mileage__c,Per_Day_Rent__c,Build_Year__c,Contact__r.Name,
+                             Contact__r.Email,Contact__r.HomePhone,Car_Type__r.Name,Picture__c"/>
+    
+    
+    <lightning:layout multipleRows="true">
+    <lightning:layoutItem size="12"
+                          smallDeviceSize="12"
+                          mediumDeviceSize="12"
+                          largeDeviceSize="12">
+        <aura:if isTrue="{! !empty(v.car)}">
+            <lightning:tabset aura:id="tabs" selectedTabId="{!v.tabId}">
+            <lightning:tab label="Details" id="carddetailtab">
+                <!--<c:CarDetail car="{!v.car}"/>   recordUpdated="{!c.onRecordUpdated}"-->
+               <!-- car {!v.car.Name} will be shown here  <div>{!v.car},</div>-->
+               
+                <c:CarDetail car="{!v.car}"/>
+                </lightning:tab>
+                <lightning:tab label="Experience" aura:id="carExpTabId" id="Exptab">
+               
+                 <c:CarExp car="{!v.car}"/>
+                </lightning:tab>
+                <lightning:tab label="Add Experience" id="AddExptab">
+               
+                 <c:CarAddExperience car="{!v.car}"/>
+                </lightning:tab>
+            </lightning:tabset>
+        
+        </aura:if>
+        </lightning:layoutItem>
+    </lightning:layout>
+</aura:component>

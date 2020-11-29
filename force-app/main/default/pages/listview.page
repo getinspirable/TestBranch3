@@ -1,0 +1,25 @@
+<apex:page standardController="Account"  sidebar="false" recordSetVar="accounts" extensions="pageSizeExt">
+  <apex:form > 
+     <apex:pageBlock >
+      <apex:panelGrid columns="2">
+      <apex:commandLink action="{!previous}">previous</apex:commandLink>
+      <apex:commandLink action="{!next}">Next</apex:commandLink>
+      </apex:panelGrid>
+     
+     <apex:pageBlockTable value="{!accounts}" var="a">
+     <apex:column >
+     <apex:commandLink rerender="ren">{!a.name}
+        <apex:param value="{!a.id}" name="aid"/>
+     </apex:commandLink>
+     </apex:column>
+     <apex:column value="{!a.Phone}"/>
+      <apex:column value="{!a.NumberOfEmployees}"/>
+     </apex:pageBlockTable> 
+       </apex:pageBlock>
+       
+       <apex:outputPanel id="ren">
+         <apex:detail subject="{!$CurrentPage.parameters.aid}" relatedList="false" />
+       </apex:outputPanel>   
+       
+  </apex:form>
+</apex:page>

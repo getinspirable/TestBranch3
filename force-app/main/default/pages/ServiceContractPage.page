@@ -1,0 +1,38 @@
+<apex:page standardController="opportunity" extensions="ServiceContractClass">
+  <apex:form >
+
+    <apex:pageBlock >
+       <apex:pageBlockButtons >
+            <apex:commandButton value="select" action="{!updateopp}" />
+             <apex:commandButton value="Cancel" action="{!updateopp}" /> 
+        </apex:pageBlockButtons>
+
+       <apex:pageBlockSection columns="2">
+         <apex:pageBlockTable value="{!WrapSClist}" var="waSCl">
+           <!--<apex:column >
+              <apex:selectRadio value="{!radioBtnValue}">
+                   <apex:selectOption itemValue="{!waSCl.SC.id}" itemLabel="{!waSCl.SC.name}"/>
+                   <apex:actionSupport event="onchange" 
+                        action="{!checkSelectedValue}" 
+                                       reRender="none"/>
+                 </apex:selectRadio>-->
+               <apex:column headervalue="Cases">
+              <input type="radio" name="group" value="{!waSCl.isSelected}" id="{!waSCl.SC.id}" />
+                <!--<apex:actionSupport event="onchange" 
+                        action="{!checkSelectedValue}" 
+                                       reRender="none"/>-->
+              </apex:column>
+          <!-- </apex:column>-->
+             
+             <apex:column value="{!waSCl.SC.name}"/>-->
+            <apex:column value="{!waSCl.SC.years__c}"/>
+            <apex:column value="{!waSCl.Sc.PlanType__c}"/>
+             <apex:column value="{!waSCl.Sc.AccountID__c}"/>
+         </apex:pageBlockTable>
+        </apex:pageBlockSection>
+        
+
+
+    </apex:pageBlock>
+    </apex:form>
+</apex:page>

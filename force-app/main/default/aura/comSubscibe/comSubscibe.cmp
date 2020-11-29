@@ -1,0 +1,9 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    <aura:attribute name="messageFromEvent" type="String"/>
+    
+ 
+    <aura:handler event="c:AppEvent1" action="{!c.handleApplicationEvent}"/>
+ 
+    <p>Application Event:{!v.messageFromEvent}</p>
+    
+</aura:component>

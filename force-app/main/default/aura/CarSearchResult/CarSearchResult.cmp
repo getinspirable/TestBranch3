@@ -1,0 +1,30 @@
+<aura:component implements="flexipage:availableForAllPageTypes" extends="c:Base" controller="CarSearchController" access="global"  >
+    <aura:attribute type="Car__c[]" name="cars" access="public"/>
+    <aura:attribute type="String" name="carTypeIdComp" access="private" default=""/>
+    <aura:attribute type="Boolean" name="carFound" access="private" default="false"/>
+      <aura:attribute type="Id" name="carSelectedId" default=""/>
+    
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+    <aura:handler name="onCarSelect" event="c:carSelectedEvent" action="{!c.onCarClick}" />
+      
+   <aura:method name="searchCars" action="{!c.dosearch}"
+                description="get cars from server vased on cartype id supplied to this component"
+                access="public">
+       <aura:attribute name="carTypeId" type="String" default=""/>
+    </aura:method>
+    <lightning:layout multipleRows="true" horizontalAlign="center">
+      <aura:if isTrue="{!v.carFound}">
+       
+          <aura:iteration items="{!v.cars}" var="car">
+             <lightning:layoutItem padding="around-small" size="12"
+                                   smallDeviceSize="6"
+                                   mediumDeviceSize="4"
+                                   largeDeviceSize="3">
+                
+                 <c:CarTile car="{#car}" selected="{! car.Id == v.carSelectedId ? true : false }"/>
+                 
+              </lightning:layoutItem>
+          </aura:iteration>
+        </aura:if>
+    </lightning:layout>
+</aura:component>

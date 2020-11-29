@@ -1,0 +1,4 @@
+<apex:page standardController="serviceContract__c">
+    <h1>Congratulations</h1>
+  This is your new Page
+</apex:page>

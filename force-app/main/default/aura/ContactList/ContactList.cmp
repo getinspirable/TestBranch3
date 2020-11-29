@@ -1,0 +1,28 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" controller="ContactListController" >
+   
+    <aura:attribute name="contacts" type="Contact[]"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doinitaction}" />
+    <aura:handler event="c:SearchKeyChangeEvent" action="{!c.searchKeyChange}"/>
+    
+     <ul class="list-group">
+         
+        <aura:iteration items="{!v.contacts}" var="contact">
+             <li class="list-group-item">
+                 <a href="{! '#contact/' + contact.Id }">
+                
+                    <p> {!contact.LastName} </p>
+                     <p>{!contact.Phone}</p>
+                 </a>
+             </li>
+            <!-- <tr onclick="{!c.ContactClick}">
+                 
+                <td>
+                    <div class="slds-truncate" id="{!contact.Id}" ><p>{!contact.LastName}</p> </div>
+                 </td>
+                 <td>
+                    <div class="slds-truncate">{!contact.Phone} </div>
+                 </td>
+             </tr>-->
+         </aura:iteration>
+    </ul>
+</aura:component>

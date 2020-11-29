@@ -1,0 +1,10 @@
+<apex:page controller="CusContAccUpdate">
+ <apex:form >
+    <apex:pageBlock >
+     <apex:pageBlockSection title="congratulations {!$User.FirstName}">
+     
+     </apex:pageBlockSection>
+    </apex:pageBlock>
+ </apex:form> 
+ 
+</apex:page>

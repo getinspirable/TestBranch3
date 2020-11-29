@@ -1,0 +1,7 @@
+<apex:page >
+<apex:enhancedList type="Account"  height="300" rowsPerPage="10" id="AccountList" customizable="False"/>
+
+
+
+  
+</apex:page>

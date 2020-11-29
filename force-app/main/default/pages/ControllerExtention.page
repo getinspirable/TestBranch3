@@ -1,0 +1,14 @@
+<apex:page standardController="Account" extensions="AccountExtention">
+ 
+ <apex:form >
+ <apex:pageblock title="Account Details" >
+ Hi....{!Greeting}
+ <apex:pageBlockSection >
+ 
+  <apex:inputField value="{!Account.name}"/>
+    <apex:inputField value="{!Account.AccountNumber}"/>
+      <apex:inputField value="{!Account.phone}"/>
+ </apex:pageBlockSection>
+ </apex:pageblock>
+ </apex:form>
+</apex:page>

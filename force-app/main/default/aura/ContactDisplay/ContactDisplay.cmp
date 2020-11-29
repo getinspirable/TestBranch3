@@ -1,0 +1,22 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" controller="ContactListController">
+	<!--<aura:handler event="c:EventContactDisplay" action="{!c.DisplayContact}"/>-->
+    <aura:attribute name="contact" type="Contact" default="{'sobjectType': 'Contact'}"/>
+    
+    <aura:handler event="aura:locationChange" action="{!c.DisplayContact}"/>
+    
+  <div class="details">
+        <h1>{!v.contact.Name}</h1>
+        <h3>{!v.contact.Account.Name}</h3>
+       
+        <p>{!v.contact.Phone}</p>
+        {!v.contact.MobilePhone}
+    </div>
+    <!--<aura:attribute type="String" name="Cid" default=""/>
+    <div> heris the event to get:{!v.Cid}</div>
+   <lightning:recordForm
+        recordId="{!v.Cid}"
+        objectApiName="Contact"
+        layoutType="Full"
+        columns="1"
+        mode="readonly" />-->
+</aura:component>

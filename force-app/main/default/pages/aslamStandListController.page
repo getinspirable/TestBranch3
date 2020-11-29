@@ -1,0 +1,23 @@
+<apex:page standardController="Account" recordSetVar="Accounts" extensions="AslamStandlistControllerClass">
+  <apex:form >
+  <apex:pageblock >
+   <apex:panelGrid Columns="2">
+  <apex:commandLink value="previous" action="{!Previous}"/>
+  <apex:commandLink value="Next" action="{!Next}"/>
+  </apex:panelGrid>
+    <apex:pageBlockTable value="{!Accounts}" var="a">
+    <apex:column > 
+    <apex:commandLink reRender="ren">{!a.name}
+      <apex:param value="{!a.name}" name="aid"/>
+    </apex:commandLink>
+    </apex:column>
+    <apex:column value="{!a.AccountNumber}"/>
+    <apex:column value="{!a.type}"/>
+    </apex:pageBlockTable>
+  </apex:pageblock>
+  <apex:outputPanel id="ren">
+   <apex:detail subject="{!$CurrentPage.parameters.aid}" relatedList="false"/>
+  </apex:outputPanel>
+ 
+  </apex:form>
+</apex:page>

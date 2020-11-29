@@ -1,0 +1,40 @@
+<apex:page Controller="opportunityListPageController" >
+     <apex:form >
+        <apex:pageBlock title="All Opportunity" id="pbId">
+            <!--<apex:actionFunction name="refreshPageSize" action="{!refreshPageSize}" reRender="pbId"/>-->
+            <apex:pageBlockTable value="{!Opportunities}" var="oppObj">>
+                 <apex:column headerValue="Opportunity Name">
+                        <apex:outputField value="{!oppObj.Name}"/>
+                    </apex:column>
+                     
+                    <apex:column headerValue="Account Name">
+                        <apex:outputField value="{!oppObj.Account.name}"/>
+                    </apex:column>
+                     
+                    <apex:column headerValue="Amount">
+                        <apex:outputField value="{!oppObj.Amount}"/>
+                    </apex:column>
+                     
+                    <apex:column headerValue="Stage">
+                        <apex:outputField value="{!oppObj.StageName}"/>
+                    </apex:column>
+                  <apex:column headerValue="Close Date">
+                        <apex:outputField value="{!oppObj.CloseDate}"/>
+                    </apex:column>
+              </apex:pageBlockTable>
+           </apex:pageBlock>
+            <apex:panelGrid columns="5" >
+                 <apex:selectList value="{!size}" multiselect="false" size="1" >
+  					 <apex:selectOption itemLabel="5" itemValue="5"></apex:selectOption>
+   					<apex:selectOption itemLabel="10" itemValue="10"></apex:selectOption>
+  				  <apex:actionSupport event="onchange" action="{!refreshPageSize}"  reRender="pbId"/>
+           		 </apex:selectList>
+                <apex:commandButton reRender="pbId" value="First" action="{!setCon.first}" title="First Page"/> 
+                <apex:commandButton reRender="pbId" value="Previous" action="{!setCon.previous}"  title="Previous Page"/> 
+                <apex:commandButton reRender="pbId" value="Next" action="{!setCon.next}"  title="Next Page"/> 
+                <apex:commandButton reRender="pbId" value="Last" action="{!setCon.last}"  title="Last Page"/>
+            </apex:panelGrid>
+           
+        
+    </apex:form>
+</apex:page>

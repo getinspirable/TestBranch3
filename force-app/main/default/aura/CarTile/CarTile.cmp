@@ -1,0 +1,18 @@
+<aura:component implements="flexipage:availableForAllPageTypes" extends="c:Base" controller="CarSearchController" access="global" >
+	<aura:attribute name="car" type="Car__c" access="public" /> 
+    <aura:attribute name="selected" type="Boolean" default="false" access="public"/>
+    <aura:registerEvent name="onCarSelect" type="c.carSelectedEvent"/>
+    <!--border : 3px soild rgb(0, 200,210);
+class="{! v.selected ? 'selectedsty tile' : 'tile'}"
+-->
+    
+    <lightning:button variant="neutral" class="{! v.selected ? 'selectedsty tile' : 'tile'}"   onclick="{!c.onCarClick}">
+         <div style="{#'background-image:url(' + v.car.Picture__c +')'}" class="innertile" >
+          <div class="lower-third">
+       <h1 class="slds-truncate">{!v.car.Contact__r.Name}</h1>
+             </div>
+    </div>
+    
+  </lightning:button>
+  
+</aura:component>

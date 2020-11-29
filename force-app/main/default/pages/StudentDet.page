@@ -1,0 +1,44 @@
+<apex:page controller="StudentDetClass">
+	<apex:form id="f1">
+     
+       
+	<apex:pageBlock title="Student Details" id="p1">
+		<apex:pageblockSection id="s1" title="Student Information" columns="4">
+		    Last Name<apex:inputText id="Name" value="{!Name1}" styleClass="disableClass" /> 
+			First Name<apex:inputText id="FName" value="{!inputFirstName}"/> 
+			Mother Name<apex:inputText id="MName" value="{!inputMotherName}"/> 
+			Father Name<apex:inputText id="FaName" value="{!inputFatherName}"/> 
+            Address<apex:inputText id="Add" value="{!inputAddress}"/> 
+		</apex:pageblockSection>
+		<apex:pageBlockButtons >
+           <apex:Actionfunction action="{!save}" name="callSaveActionFn" >
+            </apex:Actionfunction>
+            <apex:commandButton value="Save" onclick="SaveBtnFn()" oncomplete="afterSave()"/>
+            <apex:commandButton value="Cancel" action="{!Cancel}" immediate="true"/>
+            <apex:commandButton value="Search" action="{!search}"/>
+		</apex:pageBlockButtons>
+	</apex:pageBlock>
+	</apex:form>
+     <script type="text/javascript">
+    //var Form=document.getElementById('f1');
+    
+    //document.getElementById("SaveID").onclick = function() {SaveBtnFn()};
+ 
+	function SaveBtnFn() {
+        var v1=document.getElementById("{!$Component.f1.p1.s1.Name}").value;   
+        if (v1!=null){
+        		callSaveActionFn();
+                 
+            }else{
+                alert('Last Name cannot be blank');
+                }
+        }
+    
+    function afterSave(){
+       
+        document.getElementById("{!$Component.f1.p1.s1.Name}").disabled=true;
+        
+        
+        }
+        </script>
+</apex:page>

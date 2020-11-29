@@ -1,0 +1,20 @@
+<apex:page standardController="Contact" recordSetVar="oppts">
+  <apex:form >
+   <apex:pageblock >  
+   <apex:pageBlockTable value="{!oppts}" var="a">
+   <apex:column value="{!a.Name}"></apex:column>
+    <apex:column headerValue="phoneNum">
+     <apex:inputField value="{!a.AssistantPhone}"/>
+   </apex:column> 
+   <apex:column headerValue="AccName">
+     <apex:inputField value="{!a.AssistantName}"/>
+   </apex:column>
+   
+   </apex:pageBlockTable>
+    <apex:pageblockButtons >
+     <apex:commandButton value="save" action="{!save}"/>
+    </apex:pageblockButtons>
+   </apex:pageblock>
+  </apex:form>
+  
+</apex:page>

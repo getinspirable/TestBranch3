@@ -1,0 +1,12 @@
+<apex:page controller="CustomListController1Class" >
+  <apex:form >
+   <apex:pageBlock >
+     <apex:pageBlockTable value="{!Accounts}" var="a">
+       <apex:inputField value="{!a.Name}"/>
+       <apex:inputField value="{!a.AccountNumber}"/>
+     </apex:pageBlockTable>
+        
+   </apex:pageBlock>
+  
+  </apex:form>
+</apex:page>

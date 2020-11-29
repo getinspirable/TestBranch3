@@ -1,0 +1,18 @@
+<apex:page standardController="Account" extensions="OppListFilterController" >  
+    <apex:form >    
+      <apex:pageBlock title="Opportunity">
+        <apex:selectList size="1" id="St" value="{!strOppStatus}">
+ 			<apex:selectOptions value="{!OppStatus}"/>
+             <apex:actionSupport event="onchange"  reRender="Block"/>
+		 </apex:selectList> 
+        <apex:pageBlockTable id="Block" value="{!opps}" var="opp">
+            <apex:column value="{!opp.Name}"/>
+            <apex:column value="{!opp.Description}"/>
+            <apex:column value="{!opp.LeadSource}"/>
+            <apex:column value="{!opp.CloseDate}"/>
+             <apex:column value="{!opp.Amount}"/>
+            <apex:column value="{!opp.OwnerId}"/>
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+  </apex:form>
+</apex:page>

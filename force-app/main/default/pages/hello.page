@@ -1,0 +1,18 @@
+<apex:page StandardController="Account">
+  <apex:form >
+    <apex:pageBlock title="My Account infomation">
+      <apex:pageBlockSection title="USer Details">
+         <apex:outputField value="{!Account.Name}"/>
+        <apex:outputField value="{!Account.AccountNumber}"/>
+         <apex:outputField value="{!Account.Phone}"/>
+         <apex:outputField value="{!Account.Website}"/>
+     </apex:pageBlockSection>
+     
+     <apex:pageBlockSection title="Account Details">
+         <apex:outputField value="{!Account.Active__c}"/>
+        <apex:outputField value="{!Account.CustomerPriority__c}"/>
+         <apex:outputField value="{!Account.NumberofLocations__c}"/>
+             </apex:pageBlockSection>
+    </apex:pageBlock>
+  </apex:form>
+</apex:page>
